@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=1024, user-scalable=no">
+
+  <title>Zsh Presentation</title>
+
+  <!-- Required stylesheet -->
+  <link rel="stylesheet" media="screen" href="core/deck.core.css">
+
+  <!-- Extension CSS files go here. Remove or add as needed. -->
+  <link rel="stylesheet" media="screen" href="extensions/goto/deck.goto.css">
+  <link rel="stylesheet" media="screen" href="extensions/menu/deck.menu.css">
+  <link rel="stylesheet" media="screen" href="extensions/navigation/deck.navigation.css">
+  <link rel="stylesheet" media="screen" href="extensions/status/deck.status.css">
+  <link rel="stylesheet" media="screen" href="extensions/scale/deck.scale.css">
+
+  <!-- Style theme. More available in /themes/style/ or create your own. -->
+  <link rel="stylesheet" media="screen" href="themes/style/web-2.0.css">
+
+  <!-- Transition theme. More available in /themes/transition/ or create your own. -->
+  <link rel="stylesheet" media="screen" href="themes/transition/horizontal-slide.css">
+
+  <!-- Basic black and white print styles -->
+  <link rel="stylesheet" media="print" href="core/print.css">
+
+  <!-- Required Modernizr file -->
+  <script src="modernizr.custom.js"></script>
+</head>
+<body>
+  <div class="deck-container">
+
+    <!-- Begin slides. Just make elements with a class of slide. -->
+
+    <section class="slide">
+      <h1>Empowered your shell</h1>
+    </section>
+
+    <section class="slide">
+      <h2>Idees</h2>
+	  <ol>
+		<li>Installation</li>		
+		<li>Double fenetre bash zsh</li>
+		<li>Exemples avec comparaisons entre bash et zsh en commancant par bash</li>
+      </ol>
+    </section>
+
+    <section class="slide">
+      <h2>Différences</h2>
+		<li>
+          <h3>Complétion</h3>
+          <p>Complétion intégrée. On peut étendre la complétion sous bash avec </p>
+          <p>Zsh out-of the box</p>
+        </li>
+        <li>
+          <h3>Path expansion</h3>
+          <p>tab + chemin partiel</p>
+        </li>
+        <li>
+          <h3>Path replacement</h3>
+          <p>cd error lib</p>
+        </li>
+        <li>
+          <h3>Alias</h3>
+          <p>Normal</p>
+          <p>Global: -g : N'importe ou dans la commande</p>
+          <p>Suffix: -s: Open with</p>
+        </li>
+        <li>
+          <h3>Globbing / recherche: trouver terme</h3>
+          <p>recursive =! sous répertoires</p>
+        </li>
+        <li>
+          <h3>Historique / sous historique</h3>
+          <p>Fleche du haut dans commande</p>
+        </li>
+        <li>
+          <h3>Right prompt</h3>
+          <p></p>
+        </li>
+    </section>
+
+	<section class="slide">
+      <h2>Oh my zsh</h2>
+	  <ol>
+		<li>What ?</li>
+		<li>Installation</li>		
+		<pre>
+git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+cp ~/.zshrc ~/.zshrc.orig
+cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+chsh -s /bin/zsh
+		</pre>
+      </ol>
+    </section>
+
+    <!-- End slides. -->
+
+    <!-- Begin extension snippets. Add or remove as needed. -->
+
+    <!-- deck.navigation snippet -->
+    <div aria-role="navigation">
+      <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+      <a href="#" class="deck-next-link" title="Next">&#8594;</a>
+    </div>
+
+    <!-- deck.status snippet -->
+    <p class="deck-status" aria-role="status">
+      <span class="deck-status-current"></span>
+      /
+      <span class="deck-status-total"></span>
+    </p>
+
+    <!-- deck.goto snippet -->
+    <form action="." method="get" class="goto-form">
+      <label for="goto-slide">Go to slide:</label>
+      <input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+      <datalist id="goto-datalist"></datalist>
+      <input type="submit" value="Go">
+    </form>
+
+    <!-- End extension snippets. -->
+  </div>
+
+<!-- Required JS files. -->
+<script src="jquery.min.js"></script>
+<script src="core/deck.core.js"></script>
+
+<!-- Extension JS files. Add or remove as needed. -->
+<script src="extensions/menu/deck.menu.js"></script>
+<script src="extensions/goto/deck.goto.js"></script>
+<script src="extensions/status/deck.status.js"></script>
+<script src="extensions/navigation/deck.navigation.js"></script>
+<script src="extensions/scale/deck.scale.js"></script>
+
+<!-- Initialize the deck. You can put this in an external file if desired. -->
+<script>
+  $(function() {
+    $.deck('.slide');
+  });
+</script>
+</body>
+</html>
