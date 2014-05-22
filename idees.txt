@@ -1,0 +1,13 @@
+Forme de présentation:
+* Live Coding
+* Différence entre bash et zsh
+* + présentation html5
+
+Un peu de Fun
+* Zehd et Sash
+* picto
+
+Présentation html5
+* courte
+* points de différences entre zsh et bash en texte
+* oh-my-zsh
