@@ -71,6 +71,8 @@ sudo apt-get install zsh
           <li>Et hop c'est utilisable</li>
           <pre>
 zsh --version
+	      </pre>
+          <pre>
 zsh
 	      </pre>
           <li>Initialisation de la configuration</li>
@@ -78,35 +80,42 @@ zsh
     </section>
 
     <section class="slide">
-      <h2>Différences</h2>
-		<li>
-          <h3>Complétion</h3>
-          <p>Complétion intégrée. On peut étendre la complétion sous bash avec </p>
-          <p>Zsh out-of the box</p>
+        <h2>Différences</h2>
+        <li class="slide">
+          <h3>Completion</h3>
+          <p>Out-of the box</p><!--!= bash_completion-->
+            <!--Exemples:
+            - avec cd sans chemin: sous bash cela affiche tous les fichiers ! et répertoires. Zsh uniquement les répertoires
+            - avec kill. Bash affiche le numéro des processus + nom des . Zsh propose le parcours de la liste avec les info
+            - avec git. Idem + sous commandes / options
+            -->
         </li>
-        <li>
+        <li class="slide">
           <h3>Path expansion</h3>
           <p>tab + chemin partiel</p>
+            <!--Exemples:
+            - Complétion chemin unique: [cd ou sans cd] /u/lo/b: bash ne fait rien. zsh complète
+            - Complétion chemin ambigue: /u/l/b. bash rien. zsh propose (cycling through) le chemin sur les répertoires non uniques-->
         </li>
-        <li>
+        <li class="slide">
           <h3>Path replacement</h3>
           <p>cd error lib</p>
         </li>
-        <li>
+        <li class="slide">
           <h3>Alias</h3>
           <p>Normal</p>
           <p>Global: -g : N'importe ou dans la commande</p>
           <p>Suffix: -s: Open with</p>
         </li>
-        <li>
+        <li class="slide">
           <h3>Globbing / recherche: trouver terme</h3>
           <p>recursive =! sous répertoires</p>
         </li>
-        <li>
+        <li class="slide">
           <h3>Historique / sous historique</h3>
           <p>Fleche du haut dans commande</p>
         </li>
-        <li>
+        <li class="slide">
           <h3>Right prompt</h3>
           <p></p>
         </li>
