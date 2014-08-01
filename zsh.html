@@ -110,9 +110,18 @@ zsh
         </li>
         <li class="slide">
           <h3>Alias</h3>
-          <p>Normal</p>
-          <p>Global: -g : N'importe ou dans la commande</p>
-          <p>Suffix: -s: Open with</p>
+          <p>Classique</p>
+          <p>Suffix: -s</p>
+          <p>Global: -g</p>
+			<!-- Exemples:
+			- Alias normal: alias l='ls -lah'
+			- Suffix: Open with. Alias -s
+				- alias -s html=geany
+			- Global Alias -g:
+				- Dans le rep de la pres: find . -name '*.html' | xargs grep 'expansion'
+				- alias -g xg="| xargs grep"
+				- find . -name '*.html' xg 'expansion'
+			--> 
         </li>
         <li class="slide">
           <h3>Globbing / recherche: trouver terme</h3>
