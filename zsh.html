@@ -44,20 +44,23 @@
       -->
     </section>
 
-  <section class="slide">
-      <h2>Objectifs</h2>
-      <ol>
-          <li>Un shell plus pratique</li>
-          <li>Un shell plus facilement configurable</li>
-          <li>Etre plus productif avec son shell</li>
-      </ol>
-  </section>
+	  <section class="slide">
+		  <h2>Qu'allons-nous découvrir ?</h2>
+		  <ol>			 
+			  <li>Zsh</li>
+			  <li>Démonstration pratique</li>
+			  <li>Comparaison entre bash et zsh</li>
+		  </ol>
+		  <h2>Objectif</h2>
+		  <p>Etre plus efficace en utilisant le shell</p>
+	  </section>
 
       <section class="slide">
-          <h2>Zsh ??</h2>
+          <h2>Zsh ? Kezako ?</h2>
           <ol>
-              <li>Un autre shell</li>
-              <li>Un shell plus facilement configurable</li>
+              <li>Un autre shell</li><!-- =! csh, ksh, bash, sh -->
+              <li>Commandes built-in puissantes</li>
+              <li>Facilement configurable</li>
           </ol>
       </section>
 
@@ -80,7 +83,8 @@ zsh
     </section>
 
     <section class="slide">
-        <h2>Différences</h2>
+        <h2>Euh, quoi de neuf docteur ?</h2>
+        
         <li class="slide">
           <h3>Completion</h3>
           <p>Out-of the box</p><!--!= bash_completion-->
@@ -88,8 +92,10 @@ zsh
             - avec cd sans chemin: sous bash cela affiche tous les fichiers ! et répertoires. Zsh uniquement les répertoires
             - avec kill. Bash affiche le numéro des processus + nom des . Zsh propose le parcours de la liste avec les info
             - avec git. Idem + sous commandes / options
+            - avec netstat
             -->
         </li>
+        
         <li class="slide">
           <h3>Path expansion</h3>
           <p>Magic TAB</p>
@@ -98,6 +104,7 @@ zsh
             - Complétion chemin ambigue: /u/l/b. bash rien. zsh propose (cycling through) le chemin sur les répertoires non uniques
             -->
         </li>
+        
         <li class="slide">
           <h3>Path replacement</h3>
           <p>cd error lib</p>
@@ -108,11 +115,38 @@ zsh
 				exemple avec cas fonctionnel /opt/workspaces/front-
             -->
         </li>
+
         <li class="slide">
-          <h3>Alias</h3>
-          <p>Classique</p>
-          <p>Suffix: -s</p>
-          <p>Global: -g</p>
+          <h3>Historique / sous historique</h3>
+          <p>Fleche du haut</p>
+          <!-- Exemples: 
+			- bash: toute la/les commandes précédentes
+			- zsh: juste pour la commande concernée
+          -->
+        </li>
+        
+    </section>
+
+	<section class="slide">
+
+		<h2>Euh, quoi de neuf d'autre docteur ?</h2>
+
+		<li class="slide">
+		  <h3>Globbing / recherche</h3>
+		  <p>Recursive</p>
+		  <p>=! sous répertoires</p>
+		  <!-- Exemples: 
+			- Dans /var
+			- bash: ls -al **/*.log. juste les fichiers du répertoire demandé => premier niveau
+			- zsh: ls -al **/*.log. Tous les fichiers de logs du répertoire et des ses sous-répertoires
+		  --> 
+		</li>
+		
+		<li class="slide">
+		  <h3>Alias</h3>
+		  <p>Classique</p>
+		  <p>Suffix: -s</p>
+		  <p>Global: -g</p>
 			<!-- Exemples:
 			- Alias normal: alias l='ls -lah'
 			- Suffix: Open with. Alias -s
@@ -122,30 +156,30 @@ zsh
 				- alias -g xg="| xargs grep"
 				- find . -name '*.html' xg 'expansion'
 			--> 
-        </li>
-        <li class="slide">
-          <h3>Globbing / recherche: trouver terme</h3>
-          <p>recursive =! sous répertoires</p>
-        </li>
-        <li class="slide">
-          <h3>Historique / sous historique</h3>
-          <p>Fleche du haut</p>
-          <!-- Exemples: 
-			- bash: toute la/les commandes précédentes
-			- zsh: juste pour la commande concernée
-          -->
-        </li>
-        <li class="slide">
-          <h3>Right prompt</h3>
-          <p>PS1 / RPS1</p>          
+		</li>
+		
+		<li class="slide">
+		  <h3>Edition de variable d'environnement</h3>
+		  <p>vared</p>          
+			<!-- Exemples:
+			- vared PATH: change content
+			- echo $PATH
+			- idem avec PROMPT ou autre
+			--> 
+		</li>
+		
+		<li class="slide">
+		  <h3>Right prompt</h3>
+		  <p>PS1 / RPS1</p>          
 			<!-- Exemples:
 			- Rappel de PS1 et PROMPT. echo $PROMPT
 			- New variable environnement RPROMT ou RPS1 
 			- exemple: %D date du jour + %T heure du jour + %B bold
 			- RPROMPT=%D{%d/%m/%y}\ \|\ %B%T%b
 			--> 
-        </li>
-    </section>
+		</li>
+	</section>
+
 
 	<section class="slide">
       <h2>Oh my zsh</h2>
