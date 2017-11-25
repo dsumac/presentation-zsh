@@ -77,63 +77,72 @@
 				</section>
 
 				<section>
-					<h1>Euh, quoi de neuf docteur ?</h1>
+					<h2>Euh, quoi de neuf docteur ?</h2>
 
 					<section>
 						<h3>Completion</h3>
-						<p>Out-of the box</p><!--!= bash_completion-->
-						<!--Exemples:
-						- avec cd sans chemin: sous bash cela affiche tous les fichiers ! et répertoires. Zsh uniquement les répertoires
-						- avec kill. Bash affiche le numéro des processus + nom des . Zsh propose le parcours de la liste avec les info
-						- avec git. Idem + sous commandes / options
-						- avec netstat
-						-->
+						<p>Out-of the box</p>
+						<aside class="notes">
+							<ul>
+								<li>Out-of the box != bash_completion</li>
+								<li>avec cd sans chemin: sous bash cela affiche tous les fichiers ! et répertoires. Zsh uniquement les répertoires</li>
+								<li>avec kill. Bash affiche le numéro des processus + nom des . Zsh propose le parcours de la liste avec les info</li>
+								<li>avec git. Idem + sous commandes / options</li>
+								<li>avec netstat</li>
+							</ul>
+						</aside>
 					</section>
 
 					<section>
 						<h3>Path expansion</h3>
 						<p>Magic TAB</p>
-						<!--Exemples:
-						- Complétion chemin unique: [cd ou sans cd] /u/lo/b: bash ne fait rien. zsh complète
-						- Complétion chemin ambigue: /u/l/b. bash rien. zsh propose (cycling through) le chemin sur les répertoires non uniques
-						-->
+						<aside class="notes">
+							<ul>
+								<li>Complétion chemin unique: [cd ou sans cd] /u/lo/b: bash ne fait rien. zsh complète</li>
+								<li>Complétion chemin ambigue: /u/l/b. bash rien. zsh propose (cycling through) le chemin sur les répertoires non uniques</li>
+							</ul>
+						</aside>
 					</section>
 
 					<section>
 						<h3>Path replacement</h3>
 						<p>cd error lib</p>
-						<!--Exemples:
-							- cd /usr/include/toto. Erreur: on souhaite /usr/include/toto => cd toto titi
-							- Idem avec completion
-							- Idem au milieur du chemin
-								exemple avec cas fonctionnel /opt/workspaces/front-
-							-->
+						<aside class="notes">
+							<ul>
+								<li>cd /usr/include/toto. Erreur: on souhaite /usr/include/toto => cd toto titi</li>
+								<li>Idem avec completion</li>
+								<li>Idem au milieu du chemin: ex fonctionnel /opt/workspaces/front-</li>
+							</ul>
+						</aside>
 					</section>
 
 					<section>
 						<h3>Historique / sous historique</h3>
 						<p>Fleche du haut</p>
-						<!-- Exemples:
-							- bash: toute la/les commandes précédentes
-							- zsh: juste pour la commande concernée
-						-->
+						<aside class="notes">
+							<ul>
+								<li>bash: toute la/les commandes précédentes</li>
+								<li>zsh: juste pour la commande concernée</li>
+							</ul>
+						</aside>
 					</section>
 
 				</section>
 
 				<section>
-
 					<h2>Euh, quoi de neuf d'autre docteur ?</h2>
 
 					<section>
 						<h3>Globbing / recherche</h3>
 						<p>Recursive</p>
 						<p>=! sous répertoires</p>
-						<!-- Exemples:
-							- Dans /var
-							- bash: ls -al **/*.log. juste les fichiers du répertoire demandé => premier niveau
-							- zsh: ls -al **/*.log. Tous les fichiers de logs du répertoire et des ses sous-répertoires
-							-->
+						<aside class="notes">
+							<ul>
+								<li>Dans /var</li>
+								<li>bash: ls -al **/*.log. juste les fichiers du répertoire demandé => premier niveau</li>
+								<li>zsh: ls -al **/*.log. Tous les fichiers de logs du répertoire et des ses sous-répertoires</li>
+							</ul>
+						</aside>
 					</section>
 
 					<section>
@@ -141,39 +150,46 @@
 						<p>Classique</p>
 						<p>Suffix: -s</p>
 						<p>Global: -g</p>
-						<!-- Exemples:
-						- Alias normal: alias l='ls -lah'
-						- Suffix: Open with. Alias -s
-							- alias -s html=geany
-						- Global Alias -g:
-							- Dans le rep de la pres: find . -name '*.html' | xargs grep 'expansion'
-							- alias -g xg="| xargs grep"
-							- find . -name '*.html' xg 'expansion'
-						-->
+						<aside class="notes">
+							<ul>
+								<li>Alias normal: alias l='ls -lah'</li>
+
+								<li>Suffix: Open with. Alias -s</li>
+								<li>alias -s html=geany</li>
+
+								<li>Global Alias -g:</li>
+								<li>Dans le rep de la pres: find . -name '*.html' | xargs grep 'expansion'</li>
+								<li>alias -g xg="| xargs grep"</li>
+								<li>find . -name '*.html' xg 'expansion'</li>
+							</ul>
+						</aside>
 					</section>
 
 					<section>
 						<h3>Edition de variable d'environnement</h3>
 						<p>vared</p>
-						<!-- Exemples:
-						- vared PATH: change content
-						- echo $PATH
-						- idem avec PROMPT ou autre
-						-->
+						<aside class="notes">
+							<ul>
+								<li>vared PATH: change content</li>
+								<li>echo $PATH</li>
+								<li>idem avec PROMPT ou autre</li>
+							</ul>
+						</aside>
 					</section>
 
 					<section>
 						<h3>Right prompt</h3>
 						<p>PS1 / RPS1</p>
-						<!-- Exemples:
-						- Rappel de PS1 et PROMPT. echo $PROMPT
-						- New variable environnement RPROMT ou RPS1
-						- exemple: %D date du jour + %T heure du jour + %B bold
-						- RPROMPT=%D{%d/%m/%y}\ \|\ %B%T%b
-						-->
+						<aside class="notes">
+							<ul>
+								<li>Rappel de PS1 et PROMPT. echo $PROMPT</li>
+								<li>New variable environnement RPROMT ou RPS1</li>
+								<li>exemple: %D date du jour + %T heure du jour + %B bold</li>
+								<li>RPROMPT=%D{%d/%m/%y}\ \|\ %B%T%b</li>
+							</ul>
+						</aside>
 					</section>
 				</section>
-
 
 				<section>
 					<h2>Oh my zsh</h2>
