@@ -1,0 +1,228 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Zsh - Empower your shell</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>Zsh</h1>
+					<h3>Empower your shell</h3>
+					<p>
+						<small>Created by Damien Camus</small>
+					</p>
+					<!--
+						Zsh
+						Zehd et Sash
+						Zehd et Sash mettent une baffshe à ton shell
+						Zehd et Sash contre baffshe
+					-->
+				</section>
+
+				<section>
+					<h2>Qu'allons-nous découvrir ?</h2>
+					<ol>
+						<li>Zsh</li>
+						<li>Démonstration pratique</li>
+						<li>Comparaison entre bash et zsh</li>
+					</ol>
+					<h2>Objectif</h2>
+					<p>Etre plus efficace en utilisant le shell</p>
+				</section>
+
+				<section>
+					<h2>Zsh ? Kezako ?</h2>
+					<ol>
+						<li>Un autre shell</li><!-- =! csh, ksh, bash, sh -->
+						<li>Commandes built-in puissantes</li>
+						<li>Facilement configurable</li>
+					</ol>
+				</section>
+
+				<section>
+					<h2>Petite installation</h2>
+					<ul>
+						<li>Via les repositories</li>
+						<pre><code class="hljs" data-trim>
+								sudo apt-get install zsh
+						</code></pre>
+						<li>Et hop c'est utilisable</li>
+						<pre><code class="hljs" data-trim>
+								zsh --version
+						</code></pre>
+						<pre><code class="hljs" data-trim>
+								zsh
+						</code></pre>
+						<li>Initialisation de la configuration</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Euh, quoi de neuf docteur ?</h2>
+
+					<section>
+						<h3>Completion</h3>
+						<p>Out-of the box</p>
+						<aside class="notes">
+							<ul>
+								<li>Out-of the box != bash_completion</li>
+								<li>avec cd sans chemin: sous bash cela affiche tous les fichiers ! et répertoires. Zsh uniquement les répertoires</li>
+								<li>avec kill. Bash affiche le numéro des processus + nom des . Zsh propose le parcours de la liste avec les info</li>
+								<li>avec git. Idem + sous commandes / options</li>
+								<li>avec netstat</li>
+							</ul>
+						</aside>
+					</section>
+
+					<section>
+						<h3>Path expansion</h3>
+						<p>Magic TAB</p>
+						<aside class="notes">
+							<ul>
+								<li>Complétion chemin unique: [cd ou sans cd] /u/lo/b: bash ne fait rien. zsh complète</li>
+								<li>Complétion chemin ambigue: /u/l/b. bash rien. zsh propose (cycling through) le chemin sur les répertoires non uniques</li>
+							</ul>
+						</aside>
+					</section>
+
+					<section>
+						<h3>Path replacement</h3>
+						<p>cd error lib</p>
+						<aside class="notes">
+							<ul>
+								<li>cd /usr/include/toto. Erreur: on souhaite /usr/include/toto => cd toto titi</li>
+								<li>Idem avec completion</li>
+								<li>Idem au milieu du chemin: ex fonctionnel /opt/workspaces/front-</li>
+							</ul>
+						</aside>
+					</section>
+
+					<section>
+						<h3>Historique / sous historique</h3>
+						<p>Fleche du haut</p>
+						<aside class="notes">
+							<ul>
+								<li>bash: toute la/les commandes précédentes</li>
+								<li>zsh: juste pour la commande concernée</li>
+							</ul>
+						</aside>
+					</section>
+
+				</section>
+
+				<section>
+					<h2>Euh, quoi de neuf d'autre docteur ?</h2>
+
+					<section>
+						<h3>Globbing / recherche</h3>
+						<p>Recursive</p>
+						<p>=! sous répertoires</p>
+						<aside class="notes">
+							<ul>
+								<li>Dans /var</li>
+								<li>bash: ls -al **/*.log. juste les fichiers du répertoire demandé => premier niveau</li>
+								<li>zsh: ls -al **/*.log. Tous les fichiers de logs du répertoire et des ses sous-répertoires</li>
+							</ul>
+						</aside>
+					</section>
+
+					<section>
+						<h3>Alias</h3>
+						<p>Classique</p>
+						<p>Suffix: -s</p>
+						<p>Global: -g</p>
+						<aside class="notes">
+							<ul>
+								<li>Alias normal: alias l='ls -lah'</li>
+
+								<li>Suffix: Open with. Alias -s</li>
+								<li>alias -s html=geany</li>
+
+								<li>Global Alias -g:</li>
+								<li>Dans le rep de la pres: find . -name '*.html' | xargs grep 'expansion'</li>
+								<li>alias -g xg="| xargs grep"</li>
+								<li>find . -name '*.html' xg 'expansion'</li>
+							</ul>
+						</aside>
+					</section>
+
+					<section>
+						<h3>Edition de variable d'environnement</h3>
+						<p>vared</p>
+						<aside class="notes">
+							<ul>
+								<li>vared PATH: change content</li>
+								<li>echo $PATH</li>
+								<li>idem avec PROMPT ou autre</li>
+							</ul>
+						</aside>
+					</section>
+
+					<section>
+						<h3>Right prompt</h3>
+						<p>PS1 / RPS1</p>
+						<aside class="notes">
+							<ul>
+								<li>Rappel de PS1 et PROMPT. echo $PROMPT</li>
+								<li>New variable environnement RPROMT ou RPS1</li>
+								<li>exemple: %D date du jour + %T heure du jour + %B bold</li>
+								<li>RPROMPT=%D{%d/%m/%y}\ \|\ %B%T%b</li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+
+				<section>
+					<h2>Oh my zsh</h2>
+					<ol>
+						<li>What ?</li>
+						<li>Installation</li>
+						<pre><code class="hljs" data-trim>
+							git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+							cp ~/.zshrc ~/.zshrc.orig
+							cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+							chsh -s /bin/zsh
+						</code></pre>
+					</ol>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				history: true,
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
