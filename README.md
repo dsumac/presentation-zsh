@@ -6,6 +6,7 @@ It's a french presentation.
 ## Getting Started
 
 To see it, just open **index.html** in a browser.
+There are several comments in source code to illustrate the presentation with real examples.
 
 ## Built With
 
