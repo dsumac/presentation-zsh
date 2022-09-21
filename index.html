@@ -12,6 +12,10 @@
 
 		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+		<!--
+			- User view: press "S key" (https://revealjs.com/speaker-view/)
+			- Slide mapping: press "O (letter) key"
+		-->
 	</head>
 	<body>
 		<div class="reveal">
@@ -28,44 +32,78 @@
 						Zehd et Sash mettent une baffshe à ton shell
 						Zehd et Sash contre baffshe
 					-->
+					<aside class="notes">
+						<ul>
+							<li>Donne plus de pouvoir à ton shell</li>
+						</ul>
+					</aside>
 				</section>
 
 				<section>
 					<h2>Qu'allons-nous découvrir ?</h2>
-					<ol>
-						<li>Zsh</li>
-						<li>Démonstration pratique</li>
-						<li>Comparaison entre bash et zsh</li>
-					</ol>
-					<h2>Objectif</h2>
-					<p>Etre plus efficace en utilisant le shell</p>
+					<ul>
+						<li class="fragment">Zsh</li>
+						<li class="fragment">Démonstration pratique</li>
+						<li class="fragment">Comparaisons entre bash et zsh</li>
+					</ul>
+					<div class="fragment" style="margin-top: 1em">
+						<h3>Objectif</h3>
+						<p>Etre plus à l'aise et efficace avec le shell</p>
+					</div>
+					<aside class="notes">
+						<ul>
+							<li>QUOI ?Zsh: fonctionnalités de base</li>
+							<li>COMMENT ? avec demo et comparaisons</li>
+							<li>POURQUOI ? Avec cette découverte => plus efficace, à l'aise</li>
+						</ul>
+					</aside>
 				</section>
 
 				<section>
 					<h2>Zsh ? Kezako ?</h2>
-					<ol>
-						<li>Un autre shell</li><!-- =! csh, ksh, bash, sh -->
-						<li>Commandes built-in puissantes</li>
-						<li>Facilement configurable</li>
-					</ol>
+					<ul>
+						<li class="fragment">Un autre shell</li>
+						<li class="fragment">Commandes built-in puissantes</li>
+						<li class="fragment">Facilement configurable</li>
+					</ul>
+					<aside class="notes">
+						<ul>
+							<li>Autres shell: sh, csh (c shell), ksh (korn shell), bash (bourne again shell). Aujourd'hui zsh, fish etc.</li>
+							<li>Fonctionnalités déjà intégrées</li>
+							<li>Configuration: fichier de config assez user friendly</li>
+						</ul>
+					</aside>
 				</section>
 
 				<section>
 					<h2>Petite installation</h2>
 					<ul>
-						<li>Via les repositories</li>
-						<pre><code class="hljs" data-trim>
-								sudo apt-get install zsh
-						</code></pre>
-						<li>Et hop c'est utilisable</li>
-						<pre><code class="hljs" data-trim>
+						<li class="fragment">Via les repositories
+							<pre>
+								<code class="hljs" data-trim>
+									sudo apt-get install zsh
+								</code>
+							</pre>
+						</li>
+						<li class="fragment">Et hop c'est utilisable
+							<pre>
+								<code class="hljs" data-trim>
 								zsh --version
-						</code></pre>
-						<pre><code class="hljs" data-trim>
-								zsh
-						</code></pre>
-						<li>Initialisation de la configuration</li>
+								</code>
+							</pre>
+							<pre>
+								<code class="hljs" data-trim>
+									zsh
+								</code>
+							</pre>
+						</li>
+						<li class="fragment">Initialisation de la configuration</li>
 					</ul>
+					<aside class="notes">
+						<ul>
+							<li>Repo: pas besoin d'en dire plus...</li>
+						</ul>
+					</aside>
 				</section>
 
 				<section>
@@ -75,8 +113,8 @@
 						<h3>Completion</h3>
 						<p>Out-of the box</p>
 						<aside class="notes">
-							<ul>
-								<li>Out-of the box != bash_completion</li>
+							<ul class="fragment">
+								<li class="fragment">Out-of the box != bash_completion</li>
 								<li>avec cd sans chemin: sous bash cela affiche tous les fichiers ! et répertoires. Zsh uniquement les répertoires</li>
 								<li>avec kill. Bash affiche le numéro des processus + nom des . Zsh propose le parcours de la liste avec les info</li>
 								<li>avec git. Idem + sous commandes / options</li>
@@ -90,8 +128,9 @@
 						<p>Magic TAB</p>
 						<aside class="notes">
 							<ul>
-								<li>Complétion chemin unique: [cd ou sans cd] /u/lo/b: bash ne fait rien. zsh complète</li>
-								<li>Complétion chemin ambigue: /u/l/b. bash rien. zsh propose (cycling through) le chemin sur les répertoires non uniques</li>
+								<li>Prérequis: /opt/path/expansion & /opt/path2/expansion</li>
+								<li>Complétion chemin unique: [cd ou sans cd] /o/pa/ex: bash ne fait rien. zsh complète</li>
+								<li>TODO: Complétion chemin ambigüe: /o/pa/e. bash rien. zsh propose (cycling through) le chemin sur les répertoires non uniques</li>
 							</ul>
 						</aside>
 					</section>
@@ -101,9 +140,11 @@
 						<p>cd error lib</p>
 						<aside class="notes">
 							<ul>
-								<li>cd /usr/include/toto. Erreur: on souhaite /usr/include/toto => cd toto titi</li>
-								<li>Idem avec completion</li>
-								<li>Idem au milieu du chemin: ex fonctionnel /opt/workspaces/front-</li>
+								<li>cd /opt/path/replacement. Erreur: on souhaite /opt/path/expansion=> cd errorPath expansion</li>
+								<li>Idem au milieu du chemin:
+									cd /opt/errorPath/expansion. Erreur: on souhaite /opt/path/expansion=> cd errorPath expansion
+								</li>
+								<li>Verify: Idem avec completion</li>
 							</ul>
 						</aside>
 					</section>
@@ -177,7 +218,8 @@
 								<li>Rappel de PS1 et PROMPT. echo $PROMPT</li>
 								<li>New variable environnement RPROMT ou RPS1</li>
 								<li>exemple: %D date du jour + %T heure du jour + %B bold</li>
-								<li>RPROMPT=%D{%d/%m/%y}\ \|\ %B%T%b</li>
+								<li>RPROMPT='%D{%d/%m/%y} | %B%T%b'</li>
+								<li>RPS1='%D{%d/%m/%y} | %B%T%b'</li>
 							</ul>
 						</aside>
 					</section>
@@ -185,7 +227,7 @@
 
 				<section>
 					<h2>Oh my zsh</h2>
-					<ol>
+					<ul>
 						<li>What ?</li>
 						<li>Installation</li>
 						<pre><code class="hljs" data-trim>
@@ -194,7 +236,7 @@
 							cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
 							chsh -s /bin/zsh
 						</code></pre>
-					</ol>
+					</ul>
 				</section>
 			</div>
 		</div>
