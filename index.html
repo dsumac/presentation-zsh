@@ -15,6 +15,8 @@
 		<!--
 			- User view: press "S key" (https://revealjs.com/speaker-view/)
 			- Slide mapping: press "O (letter) key"
+
+			- Show pdf: ?print-pdf
 		-->
 	</head>
 	<body>
@@ -24,7 +26,7 @@
 					<h1>Zsh</h1>
 					<h3>Empower your shell</h3>
 					<p>
-						<small>Created by Damien Camus</small>
+						<small><em>Damien Camus</em></small>
 					</p>
 					<!--
 						Zsh
@@ -41,34 +43,67 @@
 
 				<section>
 					<h2>Qu'allons-nous découvrir ?</h2>
-					<ul>
-						<li class="fragment">Zsh</li>
-						<li class="fragment">Démonstration pratique</li>
-						<li class="fragment">Comparaisons entre bash et zsh</li>
-					</ul>
-					<div class="fragment" style="margin-top: 1em">
-						<h3>Objectif</h3>
-						<p>Etre plus à l'aise et efficace avec le shell</p>
-					</div>
+					<p class="fragment">ZSH</p>
+					<p class="fragment">Démonstration pratique</p>
+					<p class="fragment">Comparaisons entre bash et zsh</p>
 					<aside class="notes">
 						<ul>
-							<li>QUOI ?Zsh: fonctionnalités de base</li>
+							<li>QUOI ? Zsh: fonctionnalités de base</li>
 							<li>COMMENT ? avec demo et comparaisons</li>
 							<li>POURQUOI ? Avec cette découverte => plus efficace, à l'aise</li>
+						</ul>
+						<ul>
+							<li>Versions de bash 3.x sur macOs. On peut quand même installer d'autres versions avec homebrew</li>
+							<li>Versions de zsh 5.x. 10 ans d'ancienneté</li>
 						</ul>
 					</aside>
 				</section>
 
 				<section>
+					<h2>Objectifs</h2>
+					<section>
+						<div>
+							<p class="fragment">TEMPS</p>
+							<div class="fragment"><img data-src="images/gastonOrdi.jpg"></div>
+						</div>
+
+						<aside class="notes">
+							<ul >
+								<li>Gagner du temps => Gain de temps: outil utilisé tous les jours (normalement :) )</li>
+							</ul>
+						</aside>
+					</section>
+
+					<section>
+						<div style="margin-top: 2em">
+							<p>PLAISIR avec la CLI ... </p>
+							<div class="fragment">
+								<span>va chercher bonheur</span>
+								<img data-src="images/chico.webp" />
+							</div>
+						</div>
+						<aside class="notes">
+							<ul>
+								<li>Autrement dit, Comme disait Chico "" (pub universal bonheur) ... 2002 Plaisir: intuitif, fluide etc.</li>
+								<li>Vous vous rappelez de cette publicité ?</li>
+							</ul>
+						</aside>
+					</section>
+				</section>
+
+				<section>
 					<h2>Zsh ? Kezako ?</h2>
-					<ul>
-						<li class="fragment">Un autre shell</li>
-						<li class="fragment">Commandes built-in puissantes</li>
-						<li class="fragment">Facilement configurable</li>
-					</ul>
+					<p class="fragment">Un autre shell</p>
+					<div class="fragment">
+						<code class="hljs" data-trim>sh > csh > ksh > bash ...</code>
+					</div>
+					<p class="fragment">Fonctionnalités built-in puissantes</p>
+					<p class="fragment">Facilement configurable</p>
 					<aside class="notes">
 						<ul>
-							<li>Autres shell: sh, csh (c shell), ksh (korn shell), bash (bourne again shell). Aujourd'hui zsh, fish etc.</li>
+							<li>Autres shell: sh (bourne shell) 1979, csh (c shell), ksh (korn shell) (début 1980), bash (bourne again shell) 1989. Aujourd'hui zsh (première version 1990), fish etc.</li>
+							<li>Zsh est un bash "étendu" 1990</li>
+							<li>En 2019, adopté par défaut sur macos Catalina</li>
 							<li>Fonctionnalités déjà intégrées</li>
 							<li>Configuration: fichier de config assez user friendly</li>
 						</ul>
@@ -76,49 +111,27 @@
 				</section>
 
 				<section>
-					<h2>Petite installation</h2>
-					<ul>
-						<li class="fragment">Via les repositories
-							<pre>
-								<code class="hljs" data-trim>
-									sudo apt-get install zsh
-								</code>
-							</pre>
-						</li>
-						<li class="fragment">Et hop c'est utilisable
-							<pre>
-								<code class="hljs" data-trim>
-								zsh --version
-								</code>
-							</pre>
-							<pre>
-								<code class="hljs" data-trim>
-									zsh
-								</code>
-							</pre>
-						</li>
-						<li class="fragment">Initialisation de la configuration</li>
-					</ul>
-					<aside class="notes">
-						<ul>
-							<li>Repo: pas besoin d'en dire plus...</li>
-						</ul>
-					</aside>
-				</section>
-
-				<section>
 					<h2>Euh, quoi de neuf docteur ?</h2>
+					<section>
+						<img data-src="images/bugsBunny.webp" />
+						<aside class="notes">
+							<ul >
+								<li>"Ceux qui ont déjà vu la pres sur la doc en TDD" .. ont vu mon appétance pour le lapin/bugs bunny/ les références :) => cartoons</li>
+							</ul>
+						</aside>
+					</section>
 
 					<section>
 						<h3>Completion</h3>
 						<p>Out-of the box</p>
 						<aside class="notes">
-							<ul class="fragment">
-								<li class="fragment">Out-of the box != bash_completion</li>
+							<ul>
+								<li>Out-of the box: module a activer (!= bash_completion) Completion puissante</li>
 								<li>avec cd sans chemin: sous bash cela affiche tous les fichiers ! et répertoires. Zsh uniquement les répertoires</li>
 								<li>avec kill. Bash affiche le numéro des processus + nom des . Zsh propose le parcours de la liste avec les info</li>
 								<li>avec git. Idem + sous commandes / options</li>
 								<li>avec netstat</li>
+								<li><pre>autoload -Uz compinit</pre></li>
 							</ul>
 						</aside>
 					</section>
@@ -128,16 +141,17 @@
 						<p>Magic TAB</p>
 						<aside class="notes">
 							<ul>
-								<li>Prérequis: /opt/path/expansion & /opt/path2/expansion</li>
+								<li>PREREQUIS: /opt/path/expansion & /opt/path_other/expansion</li>
+								<li>Complétion chemin unique: ls /opt/path <TAB>: bash propose les deux. zsh complète cycliquement (cycling through)</li>
 								<li>Complétion chemin unique: [cd ou sans cd] /o/pa/ex: bash ne fait rien. zsh complète</li>
-								<li>TODO: Complétion chemin ambigüe: /o/pa/e. bash rien. zsh propose (cycling through) le chemin sur les répertoires non uniques</li>
+								<li>TODO: Complétion chemin ambigüe: /o/pa/e. bash rien. zsh propose le chemin sur les répertoires non uniques</li>
 							</ul>
 						</aside>
 					</section>
 
 					<section>
 						<h3>Path replacement</h3>
-						<p>cd error lib</p>
+						<p>cd errorDir newDir</p>
 						<aside class="notes">
 							<ul>
 								<li>cd /opt/path/replacement. Erreur: on souhaite /opt/path/expansion=> cd errorPath expansion</li>
@@ -163,7 +177,16 @@
 				</section>
 
 				<section>
-					<h2>Euh, quoi de neuf d'autre docteur ?</h2>
+					<h2>Euh, quoi d'autre docteur ?</h2>
+
+					<section>
+						<img src="images/bugsBunny.webp" />
+						<aside class="notes">
+							<ul >
+								<li></li>
+							</ul>
+						</aside>
+					</section>
 
 					<section>
 						<h3>Globbing / recherche</h3>
@@ -188,7 +211,8 @@
 								<li>Alias normal: alias l='ls -lah'</li>
 
 								<li>Suffix: Open with. Alias -s</li>
-								<li>alias -s html=geany</li>
+								<li>alias -s html=less => You can "just run files"/ouvre automatiquement le fichier </li>
+								<li>alias -s {js,json,env,md,html,css,toml} html=bat => pour plusieurs fichiers</li>
 
 								<li>Global Alias -g:</li>
 								<li>Dans le rep de la pres: find . -name '*.html' | xargs grep 'expansion'</li>
@@ -215,6 +239,7 @@
 						<p>PS1 / RPS1</p>
 						<aside class="notes">
 							<ul>
+								<li>PREREQUIS: unset RPROMPT et unset RPS1</li>
 								<li>Rappel de PS1 et PROMPT. echo $PROMPT</li>
 								<li>New variable environnement RPROMT ou RPS1</li>
 								<li>exemple: %D date du jour + %T heure du jour + %B bold</li>
@@ -226,17 +251,128 @@
 				</section>
 
 				<section>
-					<h2>Oh my zsh</h2>
-					<ul>
-						<li>What ?</li>
-						<li>Installation</li>
-						<pre><code class="hljs" data-trim>
-							git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
-							cp ~/.zshrc ~/.zshrc.orig
-							cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
-							chsh -s /bin/zsh
-						</code></pre>
-					</ul>
+					<h2>Récapitulatif</h2>
+					<table style="font-size: 0.7em">
+						<thead>
+							<tr>
+								<th>Feature</th>
+								<th>Apport</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Completion</td>
+								<td>Contextualisée</td>
+							</tr>
+							<tr>
+								<td>Path expansion</td>
+								<td>Magic Tab: propositions</td>
+							</tr>
+							<tr>
+								<td>Path replacement</td>
+								<td>Correction de chemin</td>
+							</tr>
+							<tr>
+								<td>Historique / Sous historique</td>
+								<td>Sur une commande</td>
+							</tr>
+							<tr>
+								<td>Globbing / recherche</td>
+								<td>Récursive</td>
+							</tr>
+							<tr>
+								<td>Alias</td>
+								<td>Suffix / global</td>
+							</tr>
+							<tr>
+								<td>Edition de variable</td>
+								<td>VARED 'on the flight'</td>
+							</tr>
+							<tr>
+								<td>Right prompt</td>
+								<td>1 prompt en plus</td>
+							</tr>
+						</tbody>
+					</table>
+				</section>
+
+
+				<section>
+					<h2>Petite installation</h2>
+					<section>
+						<h3>Via les repositories / homebrew</h3>
+						<div>
+							<pre>
+								<code class="hljs" data-trim>
+
+									pacman -Syu zsh
+								</code>
+							</pre>
+							<pre>
+								<code class="hljs" data-trim>
+									apt-get install zsh
+								</code>
+							</pre>
+							<pre>
+								<code class="hljs" data-trim>
+									brew install zsh
+								</code>
+							</pre>
+						</div>
+					</section>
+					<section>
+						<h3>Et hop c'est utilisable</h3>
+						<pre>
+							<code class="hljs" data-trim>
+								zsh --version
+							</code>
+						</pre>
+						<pre>
+							<code class="hljs" data-trim>
+								zsh
+							</code>
+						</pre>
+					</section>
+					<section>
+						<h3>Initialisation de la configuration</h3>
+						<pre>
+							<code class="hljs" data-trim>
+								vim ~/.zshrc
+							</code>
+						</pre>
+					</section>
+					<aside class="notes">
+						<ul>
+							<li>Repo: pas besoin d'en dire plus...</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section>
+					<h2>Pour aller plus loin</h2>
+					<section>
+						<p>Frameworks communautaires</p>
+						<p>Oh my zsh / Prezto</p>
+						<pre>
+							<code class="hljs" data-trim>
+								git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
+								cp ~/.zshrc ~/.zshrc.orig
+								cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+							</code>
+						</pre>
+					</section>
+					<section>
+						<p>Adopte le !</p>
+						<pre>
+							<code class="hljs" data-trim>
+								chsh -s /bin/zsh
+							</code>
+						</pre>
+					</section>
+				</section>
+
+				<section>
+					<img src="images/looneyTunesEnd.jpg">
 				</section>
 			</div>
 		</div>
